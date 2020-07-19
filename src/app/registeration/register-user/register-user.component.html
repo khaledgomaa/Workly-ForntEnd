@@ -1,0 +1,55 @@
+<form #form="ngForm" autocomplete="off">
+<div class="container register-form" >
+    <div class="form">
+        <div class="note">
+            <p>Please fill out all the fields below.</p>
+        </div>
+
+        <div class="form-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" [class.has-error]="UserName.invalid">
+                        <input type="text" #UserName = "ngModel" class="form-control" [(ngModel)]="userModel.UserSecurity.UserName"
+                         placeholder="Your Name *" required minlength="3" maxlength="15"
+                          name="UserName" value=""/>
+                        <span class="help-block" style="color: red;" *ngIf="UserName.invalid">Name length must be between 3 and 15</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" [(ngModel)]="userModel.UserInfo.PhoneNumber"
+                         placeholder="Phone Number *" required name="PhoneNumber" value=""/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="password" class="form-control" [(ngModel)]="userModel.UserSecurity.Password"
+                         placeholder="Your Password *" required name="Password" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" [(ngModel)]="confirmedPassword"
+                         placeholder="Confirm Password *" required name="confirmedPassword" value=""/>
+                    </div>
+                </div> 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="userModel.UserInfo.Mail"
+                         placeholder="Your Email *" name="Mail" required value=""/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="userModel.Address.Address"
+                         placeholder="Your Address *" name="Address" required value=""/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" required (change)="onFileSelected($event.target.files)"
+                         type="file" name="ImagePath"  placeholder="Upload your file">
+                    </div>
+                </div>
+            </div>
+            <button type="button" (click)="submit()" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</div>
+</form>
+
+

@@ -1,0 +1,81 @@
+
+<div class="container register-form">
+    <div class="form">
+        <div class="note">
+            <p>Please fill out all the fields below.</p>
+        </div>
+
+        <div class="form-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="UserName" required
+                         [(ngModel)]="registerationModel.UserSecurity.UserName" placeholder="Your Name *" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" name="PhoneNumber" required
+                         [(ngModel)]="registerationModel.AgentInfo.PhoneNumber" placeholder="Phone Number *" value=""/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="Password" required
+                         [(ngModel)]="registerationModel.UserSecurity.Password" placeholder="Your Password *" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="confirmedPassword" required
+                         [(ngModel)]="confirmedPassword" placeholder="Confirm Password *" value=""/>
+                    </div>
+                </div> 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name ="Email" required
+                         [(ngModel)]="registerationModel.AgentInfo.Email" placeholder="Your Email *" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="Location" required
+                         [(ngModel)]="registerationModel.AgentInfo.Location" placeholder="Your Location *" value=""/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <select class="form-control" (change)="updateJob($event.target.value)" required>
+                            <option >Select your Job</option>
+                            <option *ngFor="let job of allJobs"  [value] ="job.name" >{{job.name}}</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name ="Rate" required
+                         [(ngModel)]="registerationModel.AgentInfo.Rate" placeholder="Your Rate *" value=""/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="Experience" required
+                         [(ngModel)]="registerationModel.AgentInfo.Experience" placeholder="Your Experience *" value=""/>
+                    </div>
+                   
+                    <div class="form-group">
+                        <ng-multiselect-dropdown
+                            [placeholder]="'Select Skills'"
+                            [settings]="dropdownSettings"
+                            [data]="allSkills"
+                            [(ngModel)]="selectedItems"
+                            (onSelect)="onSelect($event)"
+                        >
+                        </ng-multiselect-dropdown>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" (change)="onFileSelected($event.target.files)" name="ImagePath" type="file" placeholder="Upload your file">
+                    </div>
+                </div>
+            <button type="button" (click)="submit()" class="btnSubmit">Submit</button>
+        </div>
+    </div>
+</div>
+
+
+
